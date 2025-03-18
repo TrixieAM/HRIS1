@@ -58,8 +58,6 @@ function App() {
     fetchSettings();
   }, []);
 
-  
-
   return (
     <ThemeProvider theme={createTheme({ typography: { fontFamily: "Poppins, sans-serif" } })}>
       <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh", overflow: "hidden" }}>
@@ -193,7 +191,7 @@ function App() {
               <Route
                 path="/daily_time_record"
                 element={
-                  <ProtectedRoute allowedRoles={["administrator", "superadmin"]}>
+                  <ProtectedRoute allowedRoles={["staff","administrator", "superadmin"]}>
                     <DailyTimeRecord />
                   </ProtectedRoute>
                 }
@@ -209,7 +207,7 @@ function App() {
               <Route
                 path="/attendance_form"
                 element={
-                  <ProtectedRoute allowedRoles={["administrator", "superadmin"]}>
+                  <ProtectedRoute allowedRoles={["staff","administrator", "superadmin"]}>
                     <AttendanceForm />
                   </ProtectedRoute>
                 }
