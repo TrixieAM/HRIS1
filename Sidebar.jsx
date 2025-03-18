@@ -56,7 +56,7 @@ const Sidebar = ({ open, handleClick, open2, handleClickAttendance }) => {
     >
       <Toolbar />
       <List>
-        <ListItem button component={Link} sx={{ color: "black" }} to="/home">
+        <ListItem button component={Link}  sx={{ color: "black" }} to="/home">
           <ListItemIcon>
             <House sx={{ fontSize: 29, marginLeft: "-6%" }} />
           </ListItemIcon>
@@ -65,7 +65,7 @@ const Sidebar = ({ open, handleClick, open2, handleClickAttendance }) => {
 
         {userRole !== "staff" && (
           <>
-            <ListItem button onClick={handleClick} sx={{ color: "black" }}>
+            <ListItem button onClick={handleClick} sx={{ color: "black", cursor: "pointer" }}>
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
@@ -139,73 +139,161 @@ const Sidebar = ({ open, handleClick, open2, handleClickAttendance }) => {
                 </ListItem>
               </List>
             </Collapse>
-          </>
-        )}
+            </>
+            )}
 
-        <ListItem button onClick={handleClickAttendance} sx={{ color: "black" }}>
-          <ListItemIcon>
-            <DashboardIcon />
-          </ListItemIcon>
-          <ListItemText primary="Records" />
-          <ListItemIcon sx={{ marginLeft: "10rem" }}>{open2 ? <ExpandLess /> : <ExpandMore />}</ListItemIcon>
-        </ListItem>
-
-        <Collapse in={open2} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding sx={{ pl: 4 }}>
-            <ListItem button component={Link} to="/daily_time_record" sx={{ color: "black" }}>
-              <ListItemIcon sx={{ marginRight: "-1rem" }}>
-                <BadgeRounded />
+            <ListItem button onClick={handleClickAttendance} sx={{ color: "black", cursor: "pointer" }}>
+              <ListItemIcon>
+                <DashboardIcon />
               </ListItemIcon>
-              <ListItemText primary="Daily Time Record" />
+              <ListItemText primary="Records" />
+              <ListItemIcon sx={{ marginLeft: "10rem" }}>{open2 ? <ExpandLess /> : <ExpandMore />}</ListItemIcon>
             </ListItem>
-            </List>
-        </Collapse>
-
         
-        <List>
-            <ListItem button component={Link} to="/pdsfile" sx={{ color: "black" }}>
-              <ListItemIcon sx={{ marginRight: "-1rem" }}>
-                <FileCopy />
-              </ListItemIcon>
-              <ListItemText primary="Datasheet Files" />
-            </ListItem>
-
             {userRole !== "staff" && (
-              <>
-                <ListItem button component={Link} to="/view_attendance" sx={{ color: "black" }}>
-                  <ListItemIcon sx={{ marginRight: "-1rem" }}>
-                    <BadgeRounded />
-                  </ListItemIcon>
-                  <ListItemText primary="View Attendance" />
-                </ListItem>
-                <ListItem button component={Link} to="/search_attendance" sx={{ color: "black" }}>
-                  <ListItemIcon sx={{ marginRight: "-1rem" }}>
-                    <BadgeRounded />
-                  </ListItemIcon>
-                  <ListItemText primary="Search Attendance" />
-                </ListItem>
+                  <>
+            <Collapse in={open2} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding sx={{ pl: 4 }}>
+                      <ListItem button component={Link} to="/view_attendance" sx={{ color: "black" }}>
+                        <ListItemIcon sx={{ marginRight: "-1rem" }}>
+                          <BadgeRounded />
+                        </ListItemIcon>
+                        <ListItemText primary="View Attendance" />
+                      </ListItem>
+                    </List>
+                  </Collapse>
+                  <Collapse in={open2} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding sx={{ pl: 4 }}>
+                      <ListItem button component={Link} to="/search_attendance" sx={{ color: "black" }}>
+                        <ListItemIcon sx={{ marginRight: "-1rem" }}>
+                          <BadgeRounded />
+                        </ListItemIcon>
+                        <ListItemText primary="Search Attendance" />
+                      </ListItem>
+                    </List>
+            </Collapse>
               </>
             )}
+            <Collapse in={open2} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding sx={{ pl: 4 }}>
+                <ListItem button component={Link} to="/daily_time_record" sx={{ color: "black" }}>
+                  <ListItemIcon sx={{ marginRight: "-1rem" }}>
+                    <BadgeRounded />
+                  </ListItemIcon>
+                  <ListItemText primary="Daily Time Record" />
+                </ListItem>
+                </List>
+            </Collapse>
+
+            {userRole !== "staff" && (
+                  <>
+                  <Collapse in={open2} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding sx={{ pl: 4 }}>
+                      <ListItem button component={Link} to="/daily_time_record_faculty" sx={{ color: "black" }}>
+                        <ListItemIcon sx={{ marginRight: "-1rem" }}>
+                          <BadgeRounded />
+                        </ListItemIcon>
+                        <ListItemText primary="Daily Faculty Time Record" />
+                      </ListItem>
+                    </List>
+                  </Collapse>
+                  <Collapse in={open2} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding sx={{ pl: 4 }}>
+                      <ListItem button component={Link} to="/attendance_form" sx={{ color: "black" }}>
+                        <ListItemIcon sx={{ marginRight: "-1rem" }}>
+                          <BadgeRounded />
+                        </ListItemIcon>
+                        <ListItemText primary="Attendance Form" />
+                      </ListItem>
+                    </List>
+                  </Collapse>
+                  <Collapse in={open2} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding sx={{ pl: 4 }}>
+                      <ListItem button component={Link} to="/attendance_module" sx={{ color: "black" }}>
+                        <ListItemIcon sx={{ marginRight: "-1rem" }}>
+                          <BadgeRounded />
+                        </ListItemIcon>
+                        <ListItemText primary="Attendance Module Non-teaching Staff" />
+                      </ListItem>
+                    </List>
+                  </Collapse>
+                  <Collapse in={open2} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding sx={{ pl: 4 }}>
+                      <ListItem button component={Link} to="/attendance_module_faculty" sx={{ color: "black" }}>
+                        <ListItemIcon sx={{ marginRight: "-1rem" }}>
+                          <BadgeRounded />
+                        </ListItemIcon>
+                        <ListItemText primary="Attendance Module Faculty" />
+                      </ListItem>
+                    </List>
+                  </Collapse>
+                  <Collapse in={open2} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding sx={{ pl: 4 }}>
+                      <ListItem button component={Link} to="/attendance_summary" sx={{ color: "black" }}>
+                        <ListItemIcon sx={{ marginRight: "-1rem" }}>
+                          <BadgeRounded />
+                        </ListItemIcon>
+                        <ListItemText primary="Attendance Summary" />
+                      </ListItem>
+                    </List>
+                  </Collapse>
+                  <Collapse in={open2} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding sx={{ pl: 4 }}>
+                      <ListItem button component={Link} to="/official_time" sx={{ color: "black" }}>
+                        <ListItemIcon sx={{ marginRight: "-1rem" }}>
+                          <BadgeRounded />
+                        </ListItemIcon>
+                        <ListItemText primary="Official Time Form" />
+                      </ListItem>
+                    </List>
+                  </Collapse>
+                  </>
+                )}
+                <List>
+                <ListItem button component={Link} to="/pdsfile" sx={{ color: "black" }}>
+                  <ListItemIcon sx={{ marginRight: "-1rem" }}>
+                    <FileCopy />
+                  </ListItemIcon>
+                  <ListItemText primary="Datasheet Files" />
+                </ListItem>
+
+                {userRole !== "staff" && (
+                  <>
+                    <ListItem button component={Link} to="/view_attendance" sx={{ color: "black" }}>
+                      <ListItemIcon sx={{ marginRight: "-1rem" }}>
+                        <BadgeRounded />
+                      </ListItemIcon>
+                      <ListItemText primary="View Attendance" />
+                    </ListItem>
+                    <ListItem button component={Link} to="/search_attendance" sx={{ color: "black" }}>
+                      <ListItemIcon sx={{ marginRight: "-1rem" }}>
+                        <BadgeRounded />
+                      </ListItemIcon>
+                      <ListItemText primary="Search Attendance" />
+                    </ListItem>
+                    
+                  </>
+                )}
+              </List>
+
+            {userRole !== "staff" && (
+              <ListItem button component={Link} sx={{ color: "black" }} to="/settings">
+                <ListItemIcon>
+                  <SettingsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Settings" />
+              </ListItem>
+            )}
+
+            <ListItem button sx={{ cursor: "pointer" }} onClick={handleLogout}>
+              <ListItemIcon>
+                <LogoutIcon />
+              </ListItemIcon>
+              <ListItemText primary="Logout" />
+            </ListItem>
           </List>
+        </Drawer>
+      );
+    };
 
-        {userRole !== "staff" && (
-          <ListItem button component={Link} sx={{ color: "black" }} to="/settings">
-            <ListItemIcon>
-              <SettingsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Settings" />
-          </ListItem>
-        )}
-
-        <ListItem button sx={{ cursor: "pointer" }} onClick={handleLogout}>
-          <ListItemIcon>
-            <LogoutIcon />
-          </ListItemIcon>
-          <ListItemText primary="Logout" />
-        </ListItem>
-      </List>
-    </Drawer>
-  );
-};
-
-export default Sidebar;
+    export default Sidebar;
